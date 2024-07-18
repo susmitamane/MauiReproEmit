@@ -20,3 +20,24 @@ jobs:
         run: |
           cd emitTest
           dotnet build -f net8.0-ios -c:Release /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
+
+  mac-os14:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set Xcode version
+        run: |
+          XCODE_ROOT=/Applications/Xcode_15.2.app
+          echo "MD_APPLE_SDK_ROOT=$XCODE_ROOT" >> $GITHUB_ENV       # set environment variable to specify Xcode for Mono and Xamarin
+          sudo xcode-select -s $XCODE_ROOT
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Install .NET MAUI
+        run: |
+          dotnet workload install maui ios
+      - name: Build
+        run: |
+          cd emitTest
+          dotnet build -f net8.0-ios -c:Release /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
+
