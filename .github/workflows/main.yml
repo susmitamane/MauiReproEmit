@@ -3,7 +3,6 @@ on: [push]
 jobs:
   iOS:
     runs-on: macos-13
-    needs: GetVersion
     steps:
       - uses: actions/checkout@v4
       - name: Set Xcode version
@@ -20,4 +19,4 @@ jobs:
       - name: Build
         run: |
           cd src/NewsReader/NewsReader.MauiSystem
-          dotnet build -f net8.0-ios -c:Release /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false -p:ApplicationVersion=${{ needs.GetVersion.outputs.version }} -p:ApplicationDisplayVersion=${{ needs.GetVersion.outputs.version }}
+          dotnet build -f net8.0-ios -c:Release /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
