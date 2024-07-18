@@ -18,5 +18,5 @@ jobs:
           dotnet workload install maui ios
       - name: Build
         run: |
-          cd src/NewsReader/NewsReader.MauiSystem
+          cd emitTest
           dotnet build -f net8.0-ios -c:Release /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
