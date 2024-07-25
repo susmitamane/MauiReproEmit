@@ -13,10 +13,10 @@ on:
       Username:
         description: 'Enter Username'
         required: true
-        type: boolean
+        type: string
       Password:
         description: 'Password'
-        type: boolean
+        type: string
         required: true
 
 
