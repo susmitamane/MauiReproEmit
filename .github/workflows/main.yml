@@ -1,4 +1,24 @@
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      Environment:
+        description: 'Environment'
+        required: true
+        default: 'Dev'
+        type: choice
+        options:
+        - Dev
+        - Qa
+        - Production
+      Username:
+        description: 'Enter Username'
+        required: true
+        type: boolean
+      Password:
+        description: 'Password'
+        type: boolean
+        required: true
+
 
 jobs:
   iOS:
